@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+```
+<title>Shoe Guide - Find the Right Shoes</title>
+
+<meta name="description"
+      content="Learn about different types of shoes, their uses, and tips for choosing comfortable footwear.">
+
+<style>
+
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: Arial, sans-serif;
+    }
+
+    body {
+        background: #f5f5f5;
+        color: #222;
+        line-height: 1.6;
+    }
+
+    header {
+        background: #111;
+        color: white;
+        padding: 20px 8%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    header h1 {
+        font-size: 28px;
+    }
+
+    nav a {
+        color: white;
+        text-decoration: none;
+        margin-left: 25px;
+        font-size: 16px;
+    }
+
+    nav a:hover {
+        color: #ddd;
+    }
+
+    .hero {
+        background: white;
+        padding: 70px 20px;
+        text-align: center;
+    }
+
+    .hero h2 {
+        font-size: 42px;
+        margin-bottom: 15px;
+    }
+
+    .hero p {
+        max-width: 650px;
+        margin: auto;
+        color: #666;
+        font-size: 18px;
+    }
+
+    .container {
+        max-width: 1100px;
+        margin: 40px auto;
+        padding: 0 20px;
+    }
+
+    .section-title {
+        text-align: center;
+        font-size: 30px;
+        margin-bottom: 10px;
+    }
+
+    .section-subtitle {
+        text-align: center;
+        color: #666;
+        margin-bottom: 30px;
+    }
+
+    .cards {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 25px;
+    }
+
+    .card {
+        background: white;
+        padding: 25px;
+        border-radius: 12px;
+        box-shadow: 0 5px 18px rgba(0,0,0,0.08);
+    }
+
+    .card-icon {
+        font-size: 45px;
+        margin-bottom: 15px;
+    }
+
+    .card h3 {
+        margin-bottom: 10px;
+    }
+
+    .card p {
+        color: #666;
+    }
+
+    .tips {
+        background: white;
+        padding: 35px;
+        border-radius: 12px;
+        box-shadow: 0 5px 18px rgba(0,0,0,0.08);
+    }
+
+    .tips ul {
+        margin-top: 20px;
+        padding-left: 25px;
+    }
+
+    .tips li {
+        margin-bottom: 12px;
+    }
+
+    .recommendation {
+        background: #111;
+        color: white;
+        padding: 45px 25px;
+        text-align: center;
+        border-radius: 12px;
+        margin-top: 40px;
+    }
+
+    .recommendation h2 {
+        font-size: 30px;
+        margin-bottom: 15px;
+    }
+
+    .recommendation p {
+        color: #ddd;
+        margin-bottom: 25px;
+    }
+
+    .store-button {
+        display: inline-block;
+        background: white;
+        color: #111;
+        text-decoration: none;
+        padding: 13px 25px;
+        border-radius: 7px;
+        font-weight: bold;
+    }
+
+    .store-button:hover {
+        background: #ddd;
+    }
+
+    footer {
+        background: #111;
+        color: #aaa;
+        text-align: center;
+        padding: 30px;
+        margin-top: 50px;
+    }
+
+    @media (max-width: 700px) {
+
+        header {
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        nav a {
+            margin: 0 8px;
+        }
+
+        .hero h2 {
+            font-size: 32px;
+        }
+
+        .cards {
+            grid-template-columns: 1fr;
+        }
+    }
+
+</style>
+```
+
+</head>
+
+<body>
+
+```
+<!-- HEADER -->
+
+<header>
+
+    <h1>👟 Shoe Guide</h1>
+
+    <nav>
+        <a href="#home">Home</a>
+        <a href="#types">Shoe Types</a>
+        <a href="#tips">Buying Tips</a>
+    </nav>
+
+</header>
+
+
+<!-- HERO SECTION -->
+
+<section class="hero" id="home">
+
+    <h2>Find the Right Shoes for You</h2>
+
+    <p>
+        Learn about different types of footwear and discover
+        useful tips for choosing comfortable, stylish and
+        suitable shoes for everyday activities.
+    </p>
+
+</section>
+
+
+<!-- SHOE TYPES -->
+
+<section class="container" id="types">
+
+    <h2 class="section-title">
+        Popular Types of Shoes
+    </h2>
+
+    <p class="section-subtitle">
+        Different shoes are designed for different activities.
+    </p>
+
+
+    <div class="cards">
+
+        <div class="card">
+
+            <div class="card-icon">👟</div>
+
+            <h3>Casual Shoes</h3>
+
+            <p>
+                Casual shoes are suitable for everyday activities,
+                shopping, travelling and casual outings.
+            </p>
+
+        </div>
+
+
+        <div class="card">
+
+            <div class="card-icon">🏃</div>
+
+            <h3>Running Shoes</h3>
+
+            <p>
+                Running shoes are designed to provide support,
+                comfort and cushioning during running and exercise.
+            </p>
+
+        </div>
+
+
+        <div class="card">
+
+            <div class="card-icon">⚽</div>
+
+            <h3>Sports Shoes</h3>
+
+            <p>
+                Sports shoes are designed for physical activities
+                and can provide stability and support.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- BUYING TIPS -->
+
+<section class="container" id="tips">
+
+    <div class="tips">
+
+        <h2 class="section-title">
+            Tips for Choosing Shoes
+        </h2>
+
+        <p class="section-subtitle">
+            Keep these points in mind before buying footwear.
+        </p>
+
+        <ul>
+
+            <li>
+                Choose a shoe size that fits comfortably.
+            </li>
+
+            <li>
+                Consider the activity for which you need the shoes.
+            </li>
+
+            <li>
+                Check the material and construction of the shoes.
+            </li>
+
+            <li>
+                Look for comfortable and supportive footwear.
+            </li>
+
+            <li>
+                Consider the durability and price before purchasing.
+            </li>
+
+        </ul>
+
+    </div>
+
+</section>
+
+
+<!-- RECOMMENDATION -->
+
+<section class="container">
+
+    <div class="recommendation">
+
+        <h2>Looking for Comfortable Sneakers?</h2>
+
+        <p>
+            Explore Premium Sneakers designed for comfortable
+            everyday and casual use.
+        </p>
+
+        <!-- BACKLINK WILL GO HERE -->
+
+        <a
+            href="YOUR-MY-STORE-URL-HERE"
+            class="store-button">
+
+            🛒 Visit My Store
+
+        </a>
+
+    </div>
+
+</section>
+
+
+<!-- FOOTER -->
+
+<footer>
+
+    <p>
+        © 2026 Shoe Guide. All rights reserved.
+    </p>
+
+    <p>
+        Information about footwear, styles and buying tips.
+    </p>
+
+</footer>
+```
+
+</body>
+</html>
