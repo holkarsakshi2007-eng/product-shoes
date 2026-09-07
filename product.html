@@ -1,0 +1,1067 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Store</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
+    }
+
+    body {
+      background: #f5f5f5;
+      color: #222;
+    }
+
+    header {
+      background: #111;
+      color: white;
+      padding: 20px 8%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    header h1 {
+      cursor: pointer;
+    }
+
+    .cart-btn {
+      background: white;
+      color: #111;
+      border: none;
+      padding: 10px 18px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+
+    .page {
+      max-width: 1000px;
+      margin: 40px auto;
+      padding: 20px;
+    }
+
+    /* Product */
+
+    .product {
+      background: white;
+      padding: 30px;
+      border-radius: 15px;
+      display: flex;
+      gap: 50px;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+    }
+
+    .product-image {
+      width: 50%;
+    }
+
+    .product-image img {
+      width: 100%;
+      border-radius: 12px;
+    }
+
+    .product-info {
+      flex: 1;
+      padding-top: 20px;
+    }
+
+    .product-info h2 {
+      font-size: 36px;
+      margin-bottom: 15px;
+    }
+
+    .description {
+      color: #666;
+      line-height: 1.6;
+      margin-bottom: 20px;
+    }
+
+    .price {
+      font-size: 30px;
+      font-weight: bold;
+      color: #e63946;
+      margin-bottom: 25px;
+    }
+
+    .quantity {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      margin-bottom: 25px;
+    }
+
+    .quantity button {
+      width: 35px;
+      height: 35px;
+      border: none;
+      background: #ddd;
+      font-size: 20px;
+      cursor: pointer;
+      border-radius: 5px;
+    }
+
+    #quantity {
+      font-size: 20px;
+      font-weight: bold;
+    }
+
+    .main-btn {
+      width: 100%;
+      padding: 15px;
+      border: none;
+      border-radius: 8px;
+      background: #111;
+      color: white;
+      font-size: 18px;
+      cursor: pointer;
+    }
+
+    .main-btn:hover {
+      background: #333;
+    }
+
+    /* Cart */
+
+    .cart-page,
+    .checkout-page,
+    .success-page {
+      background: white;
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+    }
+
+    .cart-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid #ddd;
+      padding: 20px 0;
+    }
+
+    .cart-item-info {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .cart-item img {
+      width: 90px;
+      height: 90px;
+      object-fit: cover;
+      border-radius: 8px;
+    }
+
+    .cart-quantity button {
+      padding: 5px 10px;
+      margin: 0 5px;
+      cursor: pointer;
+    }
+
+    .remove-btn {
+      background: #e63946;
+      color: white;
+      border: none;
+      padding: 8px 12px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .total {
+      text-align: right;
+      font-size: 24px;
+      font-weight: bold;
+      margin: 25px 0;
+    }
+
+    /* Checkout */
+
+    .checkout-page h2 {
+      margin-bottom: 25px;
+    }
+
+    .form-group {
+      margin-bottom: 18px;
+    }
+
+    .form-group label {
+      display: block;
+      margin-bottom: 7px;
+      font-weight: bold;
+    }
+
+    .form-group input,
+    .form-group textarea {
+      width: 100%;
+      padding: 12px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      font-size: 16px;
+    }
+
+    .form-group textarea {
+      height: 100px;
+      resize: vertical;
+    }
+
+    .payment {
+      margin: 25px 0;
+    }
+
+    .payment label {
+      display: block;
+      padding: 12px;
+      background: #f5f5f5;
+      margin-bottom: 8px;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+
+    /* Success */
+
+    .success-page {
+      text-align: center;
+      padding: 60px 30px;
+    }
+
+    .success-icon {
+      font-size: 60px;
+      margin-bottom: 20px;
+    }
+
+    .success-page h2 {
+      color: #2a9d8f;
+      margin-bottom: 15px;
+    }
+
+    .order-number {
+      background: #f5f5f5;
+      padding: 15px;
+      margin: 20px 0;
+      border-radius: 8px;
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    footer {
+      text-align: center;
+      padding: 30px;
+      color: #777;
+    }
+
+
+    /* Enhanced product sections */
+    .section-title {
+      text-align: center;
+      font-size: 30px;
+      margin-bottom: 12px;
+    }
+
+    .section-subtitle {
+      text-align: center;
+      color: #666;
+      margin-bottom: 30px;
+    }
+
+    .product-sections {
+      margin-top: 30px;
+      display: grid;
+      gap: 30px;
+    }
+
+    .info-section {
+      background: white;
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+    }
+
+    .feature-grid, .spec-grid, .related-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .feature-card, .spec-card, .review-card, .faq-item {
+      background: #f8f8f8;
+      padding: 20px;
+      border-radius: 10px;
+    }
+
+    .feature-card h3, .spec-card h3 {
+      margin-bottom: 8px;
+    }
+
+    .spec-card p, .review-card p, .faq-item p {
+      color: #666;
+      line-height: 1.6;
+    }
+
+    .rating {
+      font-size: 20px;
+      margin-bottom: 8px;
+    }
+
+    .related-card {
+      border: 1px solid #eee;
+      border-radius: 10px;
+      overflow: hidden;
+      background: white;
+    }
+
+    .related-card img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+    }
+
+    .related-card-content {
+      padding: 15px;
+    }
+
+    .related-card-content h3 {
+      margin-bottom: 8px;
+    }
+
+    .related-price {
+      font-weight: bold;
+      color: #e63946;
+    }
+
+    .faq-item {
+      margin-bottom: 12px;
+    }
+
+    .faq-item h3 {
+      margin-bottom: 7px;
+    }
+
+    @media (max-width: 700px) {
+      .feature-grid, .spec-grid, .related-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 700px) {
+      .product {
+        flex-direction: column;
+      }
+
+      .product-image {
+        width: 100%;
+      }
+
+      .product-info h2 {
+        font-size: 28px;
+      }
+
+      .cart-item {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 15px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- HEADER -->
+
+  <header>
+    <h1 onclick="showProduct()">My Store</h1>
+
+    <button class="cart-btn" onclick="showCart()">
+      🛒 Cart (<span id="cartCount">0</span>)
+    </button>
+  </header>
+
+
+  <!-- PRODUCT PAGE -->
+
+  <section id="productPage" class="page">
+
+    <div class="product">
+
+      <div class="product-image">
+        <img
+          src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=800"
+          alt="Premium Sneakers">
+      </div>
+
+      <div class="product-info">
+
+        <h2>Premium Sneakers</h2>
+
+        <p class="description">
+          Comfortable and stylish sneakers designed for everyday use.
+          Lightweight, durable and perfect for casual wear.
+        </p>
+
+        <div class="price">₹2,499</div>
+
+        <div class="quantity">
+          <button onclick="decreaseProduct()">−</button>
+
+          <span id="quantity">1</span>
+
+          <button onclick="increaseProduct()">+</button>
+        </div>
+
+        <button class="main-btn" onclick="addToCart()">
+          Add to Cart
+        </button>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+
+  <!-- ADDITIONAL PRODUCT SECTIONS -->
+
+  <section class="page product-sections">
+
+    <!-- Product Details -->
+    <div class="info-section">
+      <h2 class="section-title">Product Details</h2>
+      <p class="section-subtitle">Everything you need to know about our Premium Sneakers.</p>
+      <p class="description">
+        Premium Sneakers are designed for comfortable everyday use.
+        They combine a lightweight construction with a stylish design,
+        making them suitable for walking, casual outings and daily wear.
+      </p>
+    </div>
+
+    <!-- Features -->
+    <div class="info-section">
+      <h2 class="section-title">Key Features</h2>
+      <div class="feature-grid">
+        <div class="feature-card">
+          <h3>👟 Lightweight</h3>
+          <p>Designed to provide a comfortable and lightweight feel.</p>
+        </div>
+        <div class="feature-card">
+          <h3>💪 Durable</h3>
+          <p>Strong construction designed for regular everyday use.</p>
+        </div>
+        <div class="feature-card">
+          <h3>✨ Stylish</h3>
+          <p>A modern look that works well with casual outfits.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Specifications -->
+    <div class="info-section">
+      <h2 class="section-title">Specifications</h2>
+      <div class="spec-grid">
+        <div class="spec-card">
+          <h3>Material</h3>
+          <p>Premium synthetic and textile upper</p>
+        </div>
+        <div class="spec-card">
+          <h3>Use</h3>
+          <p>Casual and everyday wear</p>
+        </div>
+        <div class="spec-card">
+          <h3>Price</h3>
+          <p>₹2,499</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Customer Reviews -->
+    <div class="info-section">
+      <h2 class="section-title">Customer Reviews</h2>
+      <div class="feature-grid">
+        <div class="review-card">
+          <div class="rating">★★★★★</div>
+          <h3>Great Comfort</h3>
+          <p>Very comfortable for everyday use. The design also looks great.</p>
+          <strong>- Rahul</strong>
+        </div>
+        <div class="review-card">
+          <div class="rating">★★★★☆</div>
+          <h3>Good Quality</h3>
+          <p>Good quality and lightweight. Worth the price.</p>
+          <strong>- Priya</strong>
+        </div>
+        <div class="review-card">
+          <div class="rating">★★★★★</div>
+          <h3>Stylish Shoes</h3>
+          <p>I liked the modern design and overall comfort.</p>
+          <strong>- Amit</strong>
+        </div>
+      </div>
+    </div>
+
+    <!-- FAQ -->
+    <div class="info-section">
+      <h2 class="section-title">Frequently Asked Questions</h2>
+      <div class="faq-item">
+        <h3>Are these sneakers suitable for daily use?</h3>
+        <p>Yes. They are designed for comfortable everyday and casual wear.</p>
+      </div>
+      <div class="faq-item">
+        <h3>What is the price?</h3>
+        <p>The current displayed price is ₹2,499.</p>
+      </div>
+      <div class="faq-item">
+        <h3>Can I order more than one pair?</h3>
+        <p>Yes. Use the quantity controls before adding the product to your cart.</p>
+      </div>
+    </div>
+
+    <!-- Related Products -->
+    <div class="info-section">
+      <h2 class="section-title">Related Products</h2>
+      <p class="section-subtitle">You may also like these products.</p>
+
+      <div class="related-grid">
+        <div class="related-card">
+          <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=600" alt="Running Shoes">
+          <div class="related-card-content">
+            <h3>Running Shoes</h3>
+            <p class="related-price">₹2,799</p>
+          </div>
+        </div>
+
+        <div class="related-card">
+          <img src="https://images.unsplash.com/photo-1608231387042-66d1773070a5?w=600" alt="Casual Shoes">
+          <div class="related-card-content">
+            <h3>Casual Shoes</h3>
+            <p class="related-price">₹2,299</p>
+          </div>
+        </div>
+
+        <div class="related-card">
+          <img src="https://images.unsplash.com/photo-1552346154-21d32810aba3?w=600" alt="Sports Shoes">
+          <div class="related-card-content">
+            <h3>Sports Shoes</h3>
+            <p class="related-price">₹3,199</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- CART PAGE -->
+
+  <section id="cartPage" class="page hidden">
+
+    <div class="cart-page">
+
+      <h2>🛒 Your Cart</h2>
+
+      <div id="cartItems"></div>
+
+      <div class="total">
+        Total: ₹<span id="cartTotal">0</span>
+      </div>
+
+      <button class="main-btn" onclick="showCheckout()">
+        Proceed to Checkout
+      </button>
+
+    </div>
+
+  </section>
+
+
+  <!-- CHECKOUT PAGE -->
+
+  <section id="checkoutPage" class="page hidden">
+
+    <div class="checkout-page">
+
+      <h2>Checkout</h2>
+
+      <div class="form-group">
+        <label>Full Name</label>
+        <input
+          type="text"
+          id="name"
+          placeholder="Enter your name">
+      </div>
+
+      <div class="form-group">
+        <label>Email</label>
+        <input
+          type="email"
+          id="email"
+          placeholder="Enter your email">
+      </div>
+
+      <div class="form-group">
+        <label>Phone Number</label>
+        <input
+          type="tel"
+          id="phone"
+          placeholder="Enter your phone number">
+      </div>
+
+      <div class="form-group">
+        <label>Delivery Address</label>
+        <textarea
+          id="address"
+          placeholder="Enter your complete address"></textarea>
+      </div>
+
+      <div class="payment">
+
+        <h3>Payment Method</h3>
+
+        <label>
+          <input
+            type="radio"
+            name="payment"
+            value="UPI"
+            checked>
+          UPI
+        </label>
+
+        <label>
+          <input
+            type="radio"
+            name="payment"
+            value="Card">
+          Credit / Debit Card
+        </label>
+
+        <label>
+          <input
+            type="radio"
+            name="payment"
+            value="COD">
+          Cash on Delivery
+        </label>
+
+      </div>
+
+      <div class="total">
+        Total: ₹<span id="checkoutTotal">0</span>
+      </div>
+
+      <button class="main-btn" onclick="placeOrder()">
+        Place Order
+      </button>
+
+    </div>
+
+  </section>
+
+
+  <!-- ORDER SUCCESS PAGE -->
+
+  <section id="successPage" class="page hidden">
+
+    <div class="success-page">
+
+      <div class="success-icon">✅</div>
+
+      <h2>Order Placed Successfully!</h2>
+
+      <p>
+        Thank you for your purchase.
+      </p>
+
+      <div class="order-number">
+        Order Number:
+        <strong id="orderNumber"></strong>
+      </div>
+
+      <p>
+        Your order will be processed soon.
+      </p>
+
+      <br>
+
+      <button class="main-btn" onclick="showProduct()">
+        Continue Shopping
+      </button>
+
+    </div>
+
+  </section>
+
+
+  <footer>
+    © 2026 My Store. All rights reserved.
+  </footer>
+
+
+  <script>
+
+    // Product information
+
+    const product = {
+      name: "Premium Sneakers",
+      price: 2499,
+      image:
+        "https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=800"
+    };
+
+
+    // Cart
+
+    let cart = [];
+
+    let productQuantity = 1;
+
+
+    // Product quantity
+
+    function increaseProduct() {
+
+      productQuantity++;
+
+      document.getElementById("quantity").textContent =
+        productQuantity;
+    }
+
+
+    function decreaseProduct() {
+
+      if (productQuantity > 1) {
+
+        productQuantity--;
+
+        document.getElementById("quantity").textContent =
+          productQuantity;
+      }
+    }
+
+
+    // Add product to cart
+
+    function addToCart() {
+
+      const existingProduct = cart.find(
+        item => item.name === product.name
+      );
+
+      if (existingProduct) {
+
+        existingProduct.quantity += productQuantity;
+
+      } else {
+
+        cart.push({
+          name: product.name,
+          price: product.price,
+          image: product.image,
+          quantity: productQuantity
+        });
+
+      }
+
+      updateCartCount();
+
+      alert("Product added to cart!");
+
+      showCart();
+    }
+
+
+    // Update cart number
+
+    function updateCartCount() {
+
+      let count = 0;
+
+      cart.forEach(item => {
+        count += item.quantity;
+      });
+
+      document.getElementById("cartCount").textContent = count;
+    }
+
+
+    // Show cart
+
+    function showCart() {
+
+      hideAllPages();
+
+      document
+        .getElementById("cartPage")
+        .classList.remove("hidden");
+
+      displayCart();
+    }
+
+
+    // Display cart items
+
+    function displayCart() {
+
+      const cartItems =
+        document.getElementById("cartItems");
+
+      const cartTotal =
+        document.getElementById("cartTotal");
+
+      cartItems.innerHTML = "";
+
+      let total = 0;
+
+
+      if (cart.length === 0) {
+
+        cartItems.innerHTML =
+          "<p>Your cart is empty.</p>";
+
+        cartTotal.textContent = "0";
+
+        return;
+      }
+
+
+      cart.forEach((item, index) => {
+
+        const itemTotal =
+          item.price * item.quantity;
+
+        total += itemTotal;
+
+
+        cartItems.innerHTML += `
+
+          <div class="cart-item">
+
+            <div class="cart-item-info">
+
+              <img src="${item.image}" alt="${item.name}">
+
+              <div>
+
+                <h3>${item.name}</h3>
+
+                <p>₹${item.price}</p>
+
+                <div class="cart-quantity">
+
+                  <button onclick="changeQuantity(${index}, -1)">
+                    −
+                  </button>
+
+                  ${item.quantity}
+
+                  <button onclick="changeQuantity(${index}, 1)">
+                    +
+                  </button>
+
+                </div>
+
+              </div>
+
+            </div>
+
+            <div>
+
+              <strong>
+                ₹${itemTotal}
+              </strong>
+
+              <br><br>
+
+              <button
+                class="remove-btn"
+                onclick="removeItem(${index})">
+                Remove
+              </button>
+
+            </div>
+
+          </div>
+
+        `;
+
+      });
+
+
+      cartTotal.textContent = total;
+    }
+
+
+    // Change cart quantity
+
+    function changeQuantity(index, change) {
+
+      cart[index].quantity += change;
+
+      if (cart[index].quantity <= 0) {
+
+        cart.splice(index, 1);
+
+      }
+
+      updateCartCount();
+
+      displayCart();
+    }
+
+
+    // Remove item
+
+    function removeItem(index) {
+
+      cart.splice(index, 1);
+
+      updateCartCount();
+
+      displayCart();
+    }
+
+
+    // Checkout
+
+    function showCheckout() {
+
+      if (cart.length === 0) {
+
+        alert("Your cart is empty!");
+
+        return;
+      }
+
+      hideAllPages();
+
+      document
+        .getElementById("checkoutPage")
+        .classList.remove("hidden");
+
+
+      let total = 0;
+
+      cart.forEach(item => {
+
+        total += item.price * item.quantity;
+
+      });
+
+      document.getElementById("checkoutTotal")
+        .textContent = total;
+    }
+
+
+    // Place order
+
+    function placeOrder() {
+
+      const name =
+        document.getElementById("name").value.trim();
+
+      const email =
+        document.getElementById("email").value.trim();
+
+      const phone =
+        document.getElementById("phone").value.trim();
+
+      const address =
+        document.getElementById("address").value.trim();
+
+
+      if (!name || !email || !phone || !address) {
+
+        alert("Please fill in all delivery details.");
+
+        return;
+      }
+
+
+      const payment =
+        document.querySelector(
+          'input[name="payment"]:checked'
+        ).value;
+
+
+      // Generate demo order number
+
+      const orderNumber =
+        "ORD-" +
+        Math.floor(
+          100000 + Math.random() * 900000
+        );
+
+
+      document.getElementById("orderNumber")
+        .textContent = orderNumber;
+
+
+      console.log("Order Details:", {
+        orderNumber: orderNumber,
+        customer: name,
+        email: email,
+        phone: phone,
+        address: address,
+        payment: payment,
+        products: cart
+      });
+
+
+      hideAllPages();
+
+      document
+        .getElementById("successPage")
+        .classList.remove("hidden");
+
+
+      // Empty cart after order
+
+      cart = [];
+
+      updateCartCount();
+    }
+
+
+    // Product page
+
+    function showProduct() {
+
+      hideAllPages();
+
+      document
+        .getElementById("productPage")
+        .classList.remove("hidden");
+    }
+
+
+    // Hide all pages
+
+    function hideAllPages() {
+
+      document
+        .getElementById("productPage")
+        .classList.add("hidden");
+
+      document
+        .getElementById("cartPage")
+        .classList.add("hidden");
+
+      document
+        .getElementById("checkoutPage")
+        .classList.add("hidden");
+
+      document
+        .getElementById("successPage")
+        .classList.add("hidden");
+    }
+
+  </script>
+
+</body>
+</html>
